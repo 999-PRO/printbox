@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>999 PRO - Отправка файлов</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <meta name="theme-color" content="#0a0a0f">
+</head>
+<body>
+    <!-- Background -->
+    <div class="bg-container">
+        <div class="bg-gradient"></div>
+        <div class="bg-noise"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <svg class="theme-toggle-icon" id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <span class="theme-toggle-text" id="themeText">День</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="client-container">
+        <div class="client-content">
+            <!-- Header -->
+            <header class="client-header">
+                <div class="client-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                        <path d="M7 7h10M7 12h10M7 17h6"/>
+                    </svg>
+                </div>
+                <h1 class="brand-name"><span class="number">999</span> <span class="pro">PRO</span></h1>
+                <p class="client-subtitle">Рекламное агентство полного цикла</p>
+            </header>
+
+            <!-- Name Input -->
+            <div class="input-group">
+                <label class="input-label" for="clientName">Ваше имя</label>
+                <input 
+                    type="text" 
+                    id="clientName" 
+                    class="input-field" 
+                    placeholder="Введите ваше имя"
+                    autocomplete="off"
+                    maxlength="50"
+                >
+            </div>
+
+            <!-- JARVIS Upload Button -->
+            <div class="upload-container" id="uploadContainer">
+                <!-- SVG Ring -->
+                <svg class="jarvis-ring" viewBox="0 0 220 220">
+                    <defs>
+                        <linearGradient id="jarvisGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#00d4ff"/>
+                            <stop offset="100%" stop-color="#0099cc"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="jarvis-ring-outer" cx="110" cy="110" r="100"/>
+                    <circle class="jarvis-ring-progress" id="progressRing" cx="110" cy="110" r="100"/>
+                </svg>
+
+                <!-- Orbiting Segments -->
+                <div class="jarvis-segments" id="jarvisSegments">
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                </div>
+
+                <!-- Upload Button -->
+                <button class="upload-btn" id="uploadBtn" onclick="triggerUpload()">
+                    <svg class="upload-icon" id="uploadIcon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                    </svg>
+                    <span class="upload-text" id="uploadText">ОТПРАВИТЬ ФАЙЛЫ</span>
+                </button>
+            </div>
+
+            <input type="file" id="fileInput" multiple style="display:none" onchange="handleFiles(this.files)">
+
+            <!-- Service Ticker -->
+            <div class="service-ticker">
+                <div class="ticker-content">
+                    <span class="ticker-item">Баннеры</span>
+                    <span class="ticker-item">Наружная реклама</span>
+                    <span class="ticker-item">Наклейки</span>
+                    <span class="ticker-item">Визитки</span>
+                    <span class="ticker-item">Плакаты</span>
+                    <span class="ticker-item">Широкоформатная печать</span>
+                    <span class="ticker-item">Печать на футболках</span>
+                    <span class="ticker-item">Интерьерные вывески</span>
+                    <span class="ticker-item">Дизайн</span>
+                    <span class="ticker-item">Срочная печать</span>
+                    <span class="ticker-item">Ламинирование</span>
+                    <span class="ticker-item">Резка</span>
+                    <span class="ticker-item">Фотопечать</span>
+                    <span class="ticker-item">Печать документов</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="ticker-item">Баннеры</span>
+                    <span class="ticker-item">Наружная реклама</span>
+                    <span class="ticker-item">Наклейки</span>
+                    <span class="ticker-item">Визитки</span>
+                    <span class="ticker-item">Плакаты</span>
+                    <span class="ticker-item">Широкоформатная печать</span>
+                    <span class="ticker-item">Печать на футболках</span>
+                    <span class="ticker-item">Интерьерные вывески</span>
+                    <span class="ticker-item">Дизайн</span>
+                    <span class="ticker-item">Срочная печать</span>
+                    <span class="ticker-item">Ламинирование</span>
+                    <span class="ticker-item">Резка</span>
+                    <span class="ticker-item">Фотопечать</span>
+                    <span class="ticker-item">Печать документов</span>
+                </div>
+            </div>
+
+            <!-- Status Card (hidden initially) -->
+            <div class="status-card hidden" id="statusCard">
+                <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <p class="status-title">Файлы успешно получены!</p>
+                <div class="status-order-id" id="statusOrderId"></div>
+                <p class="status-files" id="statusFiles"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/client.js"></script>
+</body>
+</html>
