@@ -303,7 +303,8 @@ def start_server():
     """Start the server"""
     ip = get_local_ip()
     port = 8000
-    client_url = generate_qr_code(ip, port)
+    client_url = "https://printbox.onrender.com"
+    generate_qr_code_from_url(client_url)
     panel_url = f"http://127.0.0.1:{port}/panel"
     
     print("\n" + "=" * 60)
