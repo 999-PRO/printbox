@@ -102,7 +102,13 @@ def get_local_ip():
 
 def generate_qr_code(ip: str, port: int = 8000):
     """Generate QR code for client send page"""
+    import os
+
+    if os.getenv("RENDER"):
+    url = "https://printbox.onrender.com/send"
+else:
     url = f"http://{ip}:{port}/send"
+
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
